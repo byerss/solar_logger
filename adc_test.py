@@ -74,7 +74,7 @@ while True:
 
 
     # Pause for half a second.
-    time.sleep(3)
+    time.sleep(5)
 
 
 

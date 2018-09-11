@@ -59,8 +59,11 @@ while True:
         voltage[i] = ((values[i] / 32767.0) * 4.096)
 
         #Convert to measured voltage by multiplying by voltage divider scaling
-        conV[i] = voltage[i] * (25/3.3)
+        conV[i] = voltage[i] * (15/3.31364)
 
+    #Add Zener Offset to first channel
+    conV[0] = conV[0] + 10.0 + 0.030
+    conV[1] = conV[1] + 0.055
 
 #    Print the ADC values.
 #    print('| {0:>6} | {1:>6} | {2:>6} | {3:>6} |'.format(*values))
@@ -69,12 +72,13 @@ while True:
 #    print('| %6.4f | %6.4f | %6.4f | %6.4f |' %(voltage[0], voltage[1], voltage[2], voltage[$
 
 #    Print the Converted Voltages
-    print('| %6.3f | %6.3f | %6.3f | %6.3f |' %(conV[0], conV[1], conV[2], conV[3]))
+    print('CNV | %6.3f | %6.3f | %6.3f | %6.3f |' %(conV[0], conV[1], conV[2], conV[3]))
+    print('PIN | %6.3f | %6.3f | %6.3f | %6.3f |' %(voltage[0], voltage[1], voltage[2], voltage[3]))
 
 
 
     # Pause for half a second.
-    time.sleep(5)
+    time.sleep(10)
 
 
 
